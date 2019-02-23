@@ -1,10 +1,11 @@
 # CeBot-mini
 
 <br>
-#CeBot-mini PIN-MAP 
+<b>CeBot-mini PIN-MAP</b> 
 <br>
 Microcontroller: ATMEGA328P-AU (arduino UNO compatible)
 <br>
+<pre>
 (RX)  	- D0 is referred to as Pin 0 (DIGITAL)<br>
 (TX)  	- D1 is referred to as Pin 1 (DIGITAL)<br>
 (IRIN)	- D2 is referred to as Pin 2 (DIGITAL)<br>
@@ -27,3 +28,4 @@ Microcontroller: ATMEGA328P-AU (arduino UNO compatible)
 (SDC) 	- A5 is referred to as Pin 19 (DIGITAL)<br>
 (LDR) 	- A6 is referred to as Pin 20 (ANALOG)<br>
 (BTN) 	- A7 is referred to as Pin 21 (ANALOG)<br>
+</pre>
