@@ -1,0 +1,7 @@
+24022019 - 
+	1. sarj akimi yukseltildi bunun icin R12 direnci 4k7 yerine 2k2 olarak kullannildi
+	2. motorlar tam guc testine alindi. DC-DC ceviricinin yeterli gelmedigi goruldu
+	Cozum olarak VIN ile VCC arasina diyot eklenerek batarya yedeklemesi yapildi
+	Gercek olarak tasarimda cift DC-DC kullanmak gerekiyor. 
+23022019 - GITHUB sayfasi olusturuldu
+https://github.com/eproje/CeBot-mini
