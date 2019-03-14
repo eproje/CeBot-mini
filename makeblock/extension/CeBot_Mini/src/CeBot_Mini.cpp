@@ -4,8 +4,11 @@
 
 	CBMRGBLed CeBot_Led(13);
 	CBMOLED display;
+	//CBMDCMOTOR M1;
+	//CBMDCMOTOR M2;
 
 	uint8_t _multitask_SQ;	
+	uint8_t Keyb_Data;
 	
 
 //acilista yurutulecek otomatik calisan fonksiyondur
@@ -20,7 +23,8 @@ void CMultitask(void){
 void CBMini_init(void)
 {
 	pinMode(PIN_LED,OUTPUT);
-	Serial.begin(BAUD_RATE);
+	Serial.begin(CBM_BAUD_RATE);
+	
 	while (!Serial) { ; } //Seri baglantiyi bekle
 	
 	
@@ -30,6 +34,7 @@ void CBMini_init(void)
 	
 	Wire.begin();
 	Wire.setClock(400000);//100000 (standard mode),400000 (fast mode).10000 (low speed mode), 1000000 fast plus,3400000 (high speed mode),
+	
 	//delay(500);
 	display.begin();
 	display.show();
@@ -50,8 +55,48 @@ void CBM_OledInit(){
 
 /*motor fonksiyonlari*/
 void CBM_Move(){
+	
 }
-void CBM_DCMotorStop(void){
+
+
+void CBMini_DCMotorRun(int motorID,int pwmVal )
+{
+	bool dir=0;
+	pinMode(PIN_M1DIR,OUTPUT);
+	pinMode(PIN_M2DIR,OUTPUT);
+
+	if (pwmVal<0){
+		pwmVal=pwmVal * -1;
+		dir=0;
+	}else{
+		dir=1;
+	}
+
+	if (pwmVal>250){pwmVal=250;}
+
+	switch (motorID)
+	{
+	case 1:
+		digitalWrite(PIN_M1DIR,dir);
+		analogWrite(PIN_M1PWM,pwmVal);
+	break;
+	
+	case 2:
+		digitalWrite(PIN_M2DIR,dir - 1);
+		analogWrite(PIN_M2PWM,pwmVal);
+	break;
+	
+	default:
+		digitalWrite(PIN_M1DIR,dir);
+		analogWrite(PIN_M1PWM,pwmVal);
+
+		digitalWrite(PIN_M2DIR,dir - 1);
+		analogWrite(PIN_M2PWM,pwmVal);
+	break;
+	}
+}
+
+void CBMini_DCMotorStop(void){
 	
 }
 
@@ -77,4 +122,25 @@ void CBMini_DisplayClear(void){
 
 }
 
+/*mesafe olcer*/
+/* mm olarak mesafe bilgisini getirir*/
+int CBMini_GetDistance(void){
 
+}
+
+//analog degerlere ait fonksiyonlari*/
+double CBMini_GetBatteryVoltage(void){
+
+}
+
+double CBMini_GetTemperature(void){
+
+}
+
+bool CBMini_GetButtonPressed(int index){
+
+}
+
+byte CBMini_GetButton(void){
+
+}
